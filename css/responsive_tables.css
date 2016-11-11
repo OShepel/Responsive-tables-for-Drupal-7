@@ -1,0 +1,64 @@
+
+table.responsive .cell-label {
+    display: none;
+  }
+
+@media only screen and (max-width: 768px) {
+  /* Force table to not be like tables anymore */
+  table.responsive {
+    display: block;
+    max-width: 99%;
+    border-bottom: none;
+  }
+  table.responsive thead,
+  table.responsive tbody {
+    display: block;
+  }
+  table.responsive thead th,
+  table.responsive tbody th,
+  table.responsive thead td,
+  table.responsive tbody td,
+  table.responsive thead tr,
+  table.responsive tbody tr {
+    display: block;
+  }
+  table.responsive caption {
+    display: block;
+  }
+  /* Hide table headers (but not display: none;, for accessibility) */
+  table.responsive thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  table.responsive tr:nth-child(odd),
+  table.responsive tr:nth-child(even) {
+    padding-bottom: 10px;
+    border-bottom: 1px solid black; 
+  }
+  table.responsive tr:nth-child(odd){
+      background-color: silver;
+  }
+
+  table.responsive td {
+    /* Behave  like a "row" */
+    border: none;
+    text-align: left;
+    padding: 5px;
+    font-size: 95%;
+  }
+  table.responsive .cell-label {
+    display: inline-block !important;
+    width: 40%;
+    vertical-align: top;
+    margin-right: 2%;
+    color: #000;
+  }
+  table.responsive .cell-text {
+    display: inline-block;
+    width: 58%;
+    vertical-align: top;
+    font-size: 13px;
+    color: #000;
+  }
+}

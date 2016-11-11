@@ -1,0 +1,48 @@
+<?php
+/**
+ * Created by o_shepel
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function responsive_tables_menu() {
+  $items['admin/config/user-interface/rt'] = array(
+    'title'             => 'Responsive Tables',
+    'weight'            => 20,
+    'page callback'     => 'drupal_get_form',
+    'page arguments'    => array('responsive_tables_form'),
+    'access callback'   => 'user_access',
+    'access arguments'  => array('administer responsive tables'),
+    'file'              => 'includes/responsive_tables.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function responsive_tables_permission()
+{
+  return array(
+    'administer responsive tables' => array(
+      'title' => t("Access Responsive tables settings"),
+      'description' => t("Access and administer Responsive tables settings."),
+    ),
+  );
+}
+
+/**
+ * Implements hook_js_alter().
+ */
+function  responsive_tables_js_alter(&$javascript){
+    $path = drupal_get_path('module', 'responsive_tables');
+
+    // adds JavaScript code that will perform table transformation to Drupal project
+    $class = variable_get('responsive_table_class', 'responsive-table');
+    drupal_add_js(array('responsive_tables' => array('tableClass' => $class)), array('type' => 'setting'));
+    drupal_add_js($path . '/js/responsive_tables.js');
+
+    drupal_add_css($path . '/css/responsive_tables.css', array('group' => CSS_DEFAULT, 'type' => 'file'));
+}

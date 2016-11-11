@@ -1,0 +1,6 @@
+name = Responsive tables
+description = "A small module that will make your tables responsive if they have a top row as a header and marked with a required class"
+package = Front-End
+version = "7.x-dev"
+core = "7.x"
+configure = admin/config/user-interface/rt
